@@ -13,7 +13,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
     // Database creation sql statement
     private static final String CREATE_TABLE_CONTACT =
             "create table note (_id integer primary key autoincrement, "
-                    + "date text not null, time text, "
+                    + "date text not null, "
                     + "title text, fullText text);";
 
     public NoteDBHelper(Context context) {

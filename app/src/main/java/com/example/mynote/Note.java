@@ -1,8 +1,6 @@
 package com.example.mynote;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Note implements Serializable {
@@ -12,18 +10,14 @@ public class Note implements Serializable {
     private String title;
     private String fullText;
     private boolean fullDisplayed;
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY 'at' HH:mm aaa");
+    //private DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY 'at' HH:mm aaa");
 
     public Note() {
         noteId = -1;
-        this.date = new Date();
+        date = new Date();
 
     }
 
-    public Note(long time, String title) {
-        this.date = new Date(time);
-        this.title = title;
-    }
 
     public int getNoteId() {
         return noteId;
@@ -34,15 +28,7 @@ public class Note implements Serializable {
     }
 
     public String getDate() {
-        return dateFormat.format(date);
-    }
-
-    public long getTime() {
-        return date.getTime();
-    }
-
-    public void setTime(long time) {
-        this.date = new Date(time);
+        return date + "";
     }
 
     public String getTitle() {
@@ -78,9 +64,9 @@ public class Note implements Serializable {
         this.fullDisplayed = fullDisplayed;
     }
 
-    public DateFormat getDateFormat() {
-        return dateFormat;
-    }
+//    public DateFormat getDateFormat() {
+//        return dateFormat;
+//    }
 
     @Override
     public String toString() {
