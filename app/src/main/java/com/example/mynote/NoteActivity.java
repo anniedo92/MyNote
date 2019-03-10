@@ -1,16 +1,26 @@
 package com.example.mynote;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
+import android.widget.ListView;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class NoteActivity extends AppCompatActivity {
+public class NoteActivity extends Activity {
+    private ListView listView;
+    private Button btnAdd;
+    private NoteDataSource dbAccess;
+    private List<Note> note;
 
-    ArrayList<Note> note;
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_activity);
+        setContentView(R.layout.activity_note);
+
+        listView = (ListView) findViewById(R.id.listView);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+
+
     }
 }
