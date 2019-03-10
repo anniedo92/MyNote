@@ -31,7 +31,6 @@ public class NoteDataSource {
         try {
             ContentValues initialValues = new ContentValues();
             initialValues.put("date", nt.getDate());
-            initialValues.put("time", nt.getTime());
             initialValues.put("title", nt.getTitle());
             initialValues.put("fullText", nt.getFullText());
 
@@ -48,7 +47,6 @@ public class NoteDataSource {
             Long rowId = (long) nt.getNoteId();
             ContentValues updateValues = new ContentValues();
             updateValues.put("date", nt.getDate());
-            updateValues.put("time", nt.getTime());
             updateValues.put("title", nt.getTitle());
             updateValues.put("fullText", nt.getFullText());
 
@@ -106,9 +104,8 @@ public class NoteDataSource {
                 newNote = new Note();                                          //1
                 newNote.setNoteId(cursor.getInt(0));
                 //newNote.setDate(cursor.getString(1));
-                //newNote.setTime(cursor.getString(2));
-                newNote.setTitle(cursor.getString(3));
-                newNote.setFullText(cursor.getString(4));
+                newNote.setTitle(cursor.getString(2));
+                newNote.setFullText(cursor.getString(3));
 
                 note.add(newNote);
                 cursor.moveToNext();
@@ -138,9 +135,8 @@ public class NoteDataSource {
         if (cursor.moveToFirst()) {
             note.setNoteId(cursor.getInt(0));
             //note.setDate(cursor.getString(1));
-            //note.setTime(cursor.getString(2));
-            note.setTitle(cursor.getString(3));
-            note.setFullText(cursor.getString(4));
+            note.setTitle(cursor.getString(2));
+            note.setFullText(cursor.getString(3));
 
             cursor.close();
         }
