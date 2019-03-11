@@ -17,10 +17,10 @@ public class SplashActivity extends Activity {
 
                 try {
                     //sleep thread for 10 seconds, time in milliseconds
-                    sleep(3000);
+                    sleep(2000);
 
                     //start new activity
-                    Intent i=new Intent(SplashActivity.this,MainActivity.class);
+                    Intent i=new Intent(SplashActivity.this,NoteActivity.class);
                     startActivity(i);
 
                     //destroying Splash activity
