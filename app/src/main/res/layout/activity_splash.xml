@@ -15,8 +15,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginVertical="10dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="6dp">
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="2dp">
 
         <TextView
             android:id="@+id/headingYourMemos"
@@ -24,8 +24,8 @@
             android:layout_height="71dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="106dp"
-            android:layout_marginTop="67dp"
+            android:layout_marginLeft="103dp"
+            android:layout_marginTop="77dp"
             android:text="DeezMemos"
             android:textAlignment="center"
             android:textSize="36sp"
@@ -33,7 +33,6 @@
 
 
     </RelativeLayout>
-
 
     <ImageView
         android:id="@+id/imageView"
@@ -43,7 +42,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="129dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="0dp"
         app:srcCompat="@drawable/applg" />
 
@@ -55,7 +54,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="170dp"
-        android:layout_marginBottom="221dp"
-        />
+        android:layout_marginBottom="221dp" />
+
+
 
 </RelativeLayout>

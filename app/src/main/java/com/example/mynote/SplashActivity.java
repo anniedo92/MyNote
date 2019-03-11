@@ -12,7 +12,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         //creating thread that will sleep for 10 seconds
-        Thread t=new Thread() {
+        Thread t = new Thread() {
             public void run() {
 
                 try {
@@ -36,3 +36,4 @@ public class SplashActivity extends Activity {
         t.start();
     }
 }
+

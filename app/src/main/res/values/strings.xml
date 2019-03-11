@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Note</string>
+    <string name="no_title">Title</string>
 </resources>
