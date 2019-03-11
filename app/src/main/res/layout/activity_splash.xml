@@ -31,20 +31,21 @@
             android:textSize="36sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="291dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="0dp"
+            app:srcCompat="@drawable/applg" />
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="291dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="0dp"
-        app:srcCompat="@drawable/applg" />
+
 
     <ProgressBar
         android:id="@+id/progressBar"
