@@ -13,9 +13,17 @@ public class NoteDataSource {
 
     private SQLiteDatabase database;
     private NoteDBHelper dbHelper;
+    private static volatile NoteDataSource instance;
 
     public NoteDataSource(Context context) {
         dbHelper = new NoteDBHelper(context);
+    }
+
+    public static synchronized NoteDataSource getInstance(Context context) {
+        if(instance == null) {
+            instance = new NoteDataSource(context);
+        }
+        return instance;
     }
 
     public void open() throws SQLException {
@@ -23,7 +31,17 @@ public class NoteDataSource {
     }
 
     public void close() {
-        dbHelper.close();
+        if (database != null) {
+            this.dbHelper.close();
+        }
+    }
+
+    public void saveNote(Note note) {
+        ContentValues values = new ContentValues();
+        values.put("date", note.getDate());
+        values.put("title", note.getTitle());
+        values.put("fullText", note.getFullText());
+        database.insert("note", null, values);
     }
 
     public boolean insertNote(Note nt) {
@@ -103,9 +121,8 @@ public class NoteDataSource {
             while (!cursor.isAfterLast()) {
                 newNote = new Note();                                          //1
                 newNote.setNoteId(cursor.getInt(0));
-                //newNote.setDate(cursor.getString(1));
-                newNote.setTitle(cursor.getString(2));
-                newNote.setFullText(cursor.getString(3));
+                newNote.setTitle(cursor.getString(1));
+                newNote.setFullText(cursor.getString(2));
 
                 note.add(newNote);
                 cursor.moveToNext();
@@ -134,9 +151,8 @@ public class NoteDataSource {
 
         if (cursor.moveToFirst()) {
             note.setNoteId(cursor.getInt(0));
-            //note.setDate(cursor.getString(1));
-            note.setTitle(cursor.getString(2));
-            note.setFullText(cursor.getString(3));
+            note.setTitle(cursor.getString(1));
+            note.setFullText(cursor.getString(2));
 
             cursor.close();
         }

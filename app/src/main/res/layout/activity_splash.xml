@@ -24,8 +24,8 @@
             android:layout_height="71dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="106dp"
-            android:layout_marginTop="67dp"
+            android:layout_marginLeft="103dp"
+            android:layout_marginTop="77dp"
             android:text="DeezMemos"
             android:textAlignment="center"
             android:textSize="36sp"
@@ -33,22 +33,6 @@
 
 
     </RelativeLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="391dp"
-        android:layout_marginEnd="0dp"
-
-
-        android:indeterminate="false"
-        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/imageView"
