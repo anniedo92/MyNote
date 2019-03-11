@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -19,7 +18,7 @@ public class EditNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
-        this.editText = (EditText) findViewById(R.id.editText);
+        this.editText = (EditText) findViewById(R.id.editTitle);
         this.btnSave = (Button) findViewById(R.id.btnSave);
         this.btnCancel = (Button) findViewById(R.id.btnCancel);
 

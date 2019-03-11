@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="DELETE" />
+            android:text="SAVE" />
 
         <Button
             android:id="@+id/btnCancel"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="ADD" />
+            android:text="CANCEL" />
     </LinearLayout>
 
     <ScrollView
@@ -41,7 +41,7 @@
         android:fillViewport="true">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top|left" />
@@ -60,10 +60,21 @@
         android:layout_marginTop="18dp"
         android:layout_marginEnd="21dp"
         android:fontFamily="sans-serif-black"
-        android:text="Your Memo: "
+        android:text="Title:"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="6dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
 
 </RelativeLayout>
