@@ -31,8 +31,8 @@ public class NoteAdapter extends ArrayAdapter<Note> {
                 v = vi.inflate(R.layout.list_note, null);
             }
 
-            TextView title = (TextView) v.findViewById(R.id.title);
-            TextView date = (TextView) v.findViewById(R.id.date);
+            TextView title = (TextView) v.findViewById(R.id.textTitle);
+            TextView date = (TextView) v.findViewById(R.id.textDate);
 
         }
         catch (Exception e) {

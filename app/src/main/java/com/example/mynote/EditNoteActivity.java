@@ -25,6 +25,7 @@ public class EditNoteActivity extends AppCompatActivity {
         this.editText = (EditText) findViewById(R.id.editTitle);
         this.btnCancel = (Button) findViewById(R.id.btnCancel);
         this.editText = (EditText) findViewById(R.id.editFullText);
+        this.btnSave = (Button) findViewById(R.id.btnSave);
 
         note = new Note();
 
