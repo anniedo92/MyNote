@@ -31,135 +31,50 @@
             android:text="CANCEL" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="68dp"
-        android:layout_height="32dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="321dp"
-        android:layout_marginBottom="681dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Title:"
-        android:textColor="@color/colorAccent"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/editTitle"
-        android:layout_width="289dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="6dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:layout_above="@id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true">
 
-        <ScrollView
-            android:layout_width="372dp"
-            android:layout_height="607dp"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="65dp">
-
-            <EditText
-                android:id="@+id/editFullText"
-                android:layout_width="349dp"
-                android:layout_height="574dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="90dp"
-                android:gravity="top"
-                tools:text="@tools:sample/date/mmddyy" />
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="33dp"
+            android:text="Title:"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
 
-        </ScrollView>
-
-    </LinearLayout>
-
-
-
-    <!--<RelativeLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
-            android:text="SAVE" />
-
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="25dp"
-            android:text="CANCEL" />
-    </RelativeLayout>
+    </ScrollView>
 
     <EditText
         android:id="@+id/editTitle"
-        android:layout_width="match_parent"
+        android:layout_width="274dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="36dp"
         android:ems="10"
-        android:hint="Title"
         android:inputType="textPersonName" />
 
-    <LinearLayout
-        android:id="@+id/layoutBody"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@id/editTitle"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+    <EditText
+        android:id="@+id/editFullText"
+        android:layout_width="340dp"
+        android:layout_height="588dp"
+        android:layout_below="@+id/editTitle"
+        android:layout_alignEnd="@+id/editTitle"
+        android:layout_marginTop="21dp"
+        android:gravity="top|left" />
 
 
-            <EditText
-                android:id="@+id/editFullText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Write Something" />
-        </ScrollView>
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutBody"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        tools:text="@tools:sample/date/ddmmyy" />-->
 
 </RelativeLayout>
