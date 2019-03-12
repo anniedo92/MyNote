@@ -13,18 +13,18 @@ public class NoteDataSource {
 
     private SQLiteDatabase database;
     private NoteDBHelper dbHelper;
-    private static volatile NoteDataSource instance;
+    //private static volatile NoteDataSource instance;
 
     public NoteDataSource(Context context) {
         dbHelper = new NoteDBHelper(context);
     }
 
-    public static synchronized NoteDataSource getInstance(Context context) {
-        if(instance == null) {
-            instance = new NoteDataSource(context);
-        }
-        return instance;
-    }
+//    public static synchronized NoteDataSource getInstance(Context context) {
+//        if(instance == null) {
+//            instance = new NoteDataSource(context);
+//        }
+//        return instance;
+//    }
 
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
@@ -36,13 +36,13 @@ public class NoteDataSource {
         }
     }
 
-    public void saveNote(Note note) {
-        ContentValues values = new ContentValues();
-        values.put("date", note.getDate());
-        values.put("title", note.getTitle());
-        values.put("fullText", note.getFullText());
-        database.insert("note", null, values);
-    }
+//    public void saveNote(Note note) {
+//        ContentValues values = new ContentValues();
+//        values.put("date", note.getDate());
+//        values.put("title", note.getTitle());
+//        values.put("fullText", note.getFullText());
+//        database.insert("note", null, values);
+//    }
 
     public boolean insertNote(Note nt) {
         boolean didSucceed = false;

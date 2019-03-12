@@ -4,18 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-public class NoteActivity extends Activity {
+import java.util.ArrayList;
+
+public class NoteActivity extends AppCompatActivity {
     private ListView listView;
     private Button btnAdd;
     private Button btnDelete;
@@ -23,13 +24,15 @@ public class NoteActivity extends Activity {
     ImageButton btnSort;
     private NoteDataSource dbAccess;
     private Note currentNote;
+    NoteAdapter adapter;
+    ArrayList<Note> note;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        listView = (ListView) findViewById(R.id.listView);
+        this.listView = (ListView) findViewById(R.id.listView);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnBack = (Button) findViewById(R.id.btnBack);
@@ -39,48 +42,48 @@ public class NoteActivity extends Activity {
         initSortBtn();
         initSortPrefs();
         savePrefs();
+
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        String orderBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("orderby", "ASC");
+        String sortBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("sortby", "title");
 
-    private void initTextChangedEvents(){
-        final EditText editTitle = (EditText) findViewById(R.id.editTitle);
-        editTitle.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //  Auto-generated method stub
+        NoteDataSource ds = new NoteDataSource(this);
+        try {
+            ds.open();
+            note = ds.getNote(sortBy, orderBy);
+            ds.close();
+            adapter = new NoteAdapter(this, note);
+            ListView listView = (ListView) findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
+        }
+
+        try {
+            ds.open();
+            note = ds.getNote(sortBy, orderBy);
+            ds.close();
+            if (note.size() > 0) {
+                ListView listView = (ListView) findViewById(R.id.listView);
+                adapter = new NoteAdapter(this, note);
+                listView.setAdapter(adapter);
+            } else {
+                Intent intent = new Intent(NoteActivity.this, EditNoteActivity.class);
+                startActivity(intent);
             }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
+        }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //  Auto-generated method stub
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                currentNote.setTitle(editTitle.getText().toString());
-            }
-        });
-
-        final EditText editFullText = (EditText) findViewById(R.id.editFullText);
-        editFullText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                currentNote.setFullText(editFullText.getText().toString());
-            }
-        });
     }
-
-    public void initAddBtn() {
+        public void initAddBtn() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
