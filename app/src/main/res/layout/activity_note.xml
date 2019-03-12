@@ -9,6 +9,7 @@
     android:background="@drawable/img_background"
     tools:context=".NoteActivity">
 
+
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -22,7 +23,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true"
             android:fontFamily="sans-serif-black"
             android:text="MY NOTES"
             android:textColor="@color/colorAccent"
@@ -48,15 +48,14 @@
 
         <ImageButton
             android:id="@+id/btnSort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="66dp"
+            android:layout_height="56dp"
             android:layout_alignParentRight="true"
-
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="12dp"
             app:srcCompat="@drawable/adjust_icon" />
-
     </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/layoutBottom"
@@ -71,23 +70,21 @@
 
         <Button
             android:id="@+id/btnAdd"
-            android:layout_width="116dp"
-            android:layout_height="41dp"
-            android:layout_alignParentTop="true"
+            android:layout_width="113dp"
+            android:layout_height="35dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="55dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="56dp"
             android:background="@drawable/add_btn_background"
             android:text="Add" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnDelete"
             android:layout_width="113dp"
             android:layout_height="35dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginStart="56dp"
             android:background="@drawable/add_btn_background"
             android:text="Delete" />
 
