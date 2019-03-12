@@ -104,8 +104,9 @@ public class EditNoteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //EditNoteActivity.super.onBackPressed();
                 //layoutEdit.setVisibility(View.GONE);
-                Intent intent = new Intent(EditNoteActivity.this, NoteActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(EditNoteActivity.this, NoteActivity.class);
+                //startActivity(intent);
+                finish();
                 //layoutNoteList.setVisibility(View.VISIBLE);
             }
         });
