@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_note_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoteActivity">
-        </activity>
+        <activity android:name=".NoteActivity"/>
+        <activity android:name=".EditNoteActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
