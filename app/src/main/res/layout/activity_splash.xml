@@ -9,55 +9,38 @@
     >
 
     <RelativeLayout
-        android:id="@+id/loading"
+        android:id="@+id/layoutSplash"
         android:layout_width="match_parent"
-        android:layout_height="722dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginVertical="10dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="2dp"
-        >
+        android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/headingYourMemos"
-            android:layout_width="223dp"
-            android:layout_height="71dp"
-            android:layout_alignParentLeft="true"
+            android:id="@+id/textAppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="103dp"
-            android:layout_marginTop="77dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
             android:text="DeezMemos"
-            android:textAlignment="center"
             android:textSize="36sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageLogo"
             android:layout_width="match_parent"
             android:layout_height="291dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="140dp"
-            android:layout_marginEnd="0dp"
+            android:layout_below="@id/textAppTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:scaleType="center"
-            android:visibility="visible"
-            app:srcCompat="@drawable/applg" />
+            android:src="@drawable/applg" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageLogo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp" />
     </RelativeLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="170dp"
-        android:layout_marginBottom="221dp" />
-
-
-
 </RelativeLayout>
