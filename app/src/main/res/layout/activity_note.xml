@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true"
             android:fontFamily="sans-serif-black"
             android:text="MY NOTES"
             android:textColor="@color/colorAccent"

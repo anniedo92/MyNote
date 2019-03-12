@@ -13,6 +13,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     private ArrayList<Note> items;
     private Context adapterContext;
 
+
     public NoteAdapter(Context context, ArrayList<Note> items) {
         super(context, R.layout.list_note, items);
         adapterContext = context;
@@ -32,6 +33,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
             TextView title = (TextView) v.findViewById(R.id.title);
             TextView date = (TextView) v.findViewById(R.id.date);
+
         }
         catch (Exception e) {
             e.printStackTrace();
