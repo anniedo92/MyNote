@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class EditNoteActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class EditNoteActivity extends AppCompatActivity {
         note = new Note();
 
         initSaveBtn();
+        initCancelBtn();
 
         Bundle bundle = getIntent().getExtras();
             if (bundle != null) {
@@ -92,12 +94,19 @@ public class EditNoteActivity extends AppCompatActivity {
         });
     }
 
+//CANCEL BUTTON ACTION
     private void initCancelBtn() {
         Button btnCancel = (Button) findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
+            RelativeLayout layoutNoteList = findViewById(R.id.layoutNoteList);
+            RelativeLayout layoutEdit = findViewById(R.id.activity_edit_note);
             @Override
             public void onClick(View v) {
-
+                //EditNoteActivity.super.onBackPressed();
+                //layoutEdit.setVisibility(View.GONE);
+                Intent intent = new Intent(EditNoteActivity.this, NoteActivity.class);
+                startActivity(intent);
+                //layoutNoteList.setVisibility(View.VISIBLE);
             }
         });
     }
