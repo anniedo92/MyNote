@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 
 
-
 public class EditNoteActivity extends AppCompatActivity {
     private EditText editTitle;
     private EditText editFullText;
@@ -47,21 +46,6 @@ public class EditNoteActivity extends AppCompatActivity {
                 }
             }
 
-        //John Hwang below
-
-        /*Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-
-        } else {
-            note = new Note();
-        }
-        note = new Note();
-
-        textDate = findViewById(R.id.textDate);
-        textDate.setText("Created on: " + note.getDate());
-
-        setEditing(true);
-        initChangedText();*/
 
         setEditing(true);
         initChangedText();

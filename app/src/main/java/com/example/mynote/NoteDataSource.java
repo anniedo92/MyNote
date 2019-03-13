@@ -19,26 +19,6 @@ public class NoteDataSource {
         dbHelper = new NoteDBHelper(context);
     }
 
-//    public static synchronized NoteDataSource getInstance(Context context) {
-//        if(instance == null) {
-//            instance = new NoteDataSource(context);
-//        }
-//        return instance;
-//    }
-
-
-
-    //DELETE BUTTON
-    public boolean deleteContact(int noteId) {
-        boolean noteDelete = false;
-        try {
-            noteDelete = database.delete("contact", "_id=" + noteId, null) > 0;
-        }
-        catch (Exception e) {
-            //Do nothing -return value already set to false
-        }
-        return noteDelete;
-    }
 
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();

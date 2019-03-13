@@ -58,17 +58,6 @@ public class NoteActivity extends AppCompatActivity {
                 Context.MODE_PRIVATE).getString("sortby", "title");
 
         NoteDataSource ds = new NoteDataSource(this);
-        try {
-            ds.open();
-            note = ds.getNote(sortBy, orderBy);
-            ds.close();
-            adapter = new NoteAdapter(this, note);
-            listView = (ListView) findViewById(R.id.listView);
-            listView.setAdapter(adapter);
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
-        }
 
         try {
             ds.open();
@@ -147,17 +136,12 @@ public class NoteActivity extends AppCompatActivity {
                if(isDeleting){
                    adapter.showDelete(position,itemClicked,NoteActivity.this, selectedNote);
 
-
                }else{
                    Intent intent = new Intent(NoteActivity.this, EditNoteActivity.class);
                    intent.putExtra("noteid",selectedNote.getNoteId());
                    startActivity(intent);
-
                }
-
            }
-
-
         });
 
     }
