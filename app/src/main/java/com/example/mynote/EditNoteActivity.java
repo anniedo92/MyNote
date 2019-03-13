@@ -31,6 +31,7 @@ public class EditNoteActivity extends AppCompatActivity {
         this.btnCancel = (Button) findViewById(R.id.btnCancel);
         this.editFullText = (EditText) findViewById(R.id.editFullText);
         this.btnSave = (Button) findViewById(R.id.btnSave);
+        textDate = findViewById(R.id.textDate);
 
         note = new Note();
 
@@ -43,6 +44,7 @@ public class EditNoteActivity extends AppCompatActivity {
                 if (note != null) {
                     this.editTitle.setText(note.getTitle());
                     this.editFullText.setText(note.getFullText());
+                    textDate.setText("Created on: " + note.getDate());
                 }
             }
 

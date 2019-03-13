@@ -15,8 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoteActivity extends AppCompatActivity {
+
     private ListView listView;
     private Button btnAdd;
     private Button btnDelete;
@@ -60,11 +62,13 @@ public class NoteActivity extends AppCompatActivity {
         NoteDataSource ds = new NoteDataSource(this);
 
         try {
+
             ds.open();
             note = ds.getNote(sortBy, orderBy);
             ds.close();
+
             if (note.size() > 0) {
-                listView = (ListView) findViewById(R.id.listView);
+                ListView listView= (ListView) findViewById(R.id.listView);
                 adapter = new NoteAdapter(this, note);
                 listView.setAdapter(adapter);
             } else {
@@ -110,6 +114,7 @@ public class NoteActivity extends AppCompatActivity {
     //INIT DELETEbtn
     public void initDeleteBtn() {
         final Button deleteBtn = (Button) findViewById(R.id.btnDelete);
+
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,8 +138,10 @@ public class NoteActivity extends AppCompatActivity {
            @Override
            public void onItemClick(AdapterView <?> parent, View itemClicked, int position,long id){
                Note selectedNote = note.get(position)  ;
+
                if(isDeleting){
                    adapter.showDelete(position,itemClicked,NoteActivity.this, selectedNote);
+                 
                }else{
                    Intent intent = new Intent(NoteActivity.this, EditNoteActivity.class);
                    intent.putExtra("noteid",selectedNote.getNoteId());
@@ -142,7 +149,6 @@ public class NoteActivity extends AppCompatActivity {
                }
            }
         });
-
     }
 
     private void initSortBtn() {
