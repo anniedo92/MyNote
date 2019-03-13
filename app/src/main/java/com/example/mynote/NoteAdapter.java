@@ -47,7 +47,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
         return v;
     }
 
-
+    //show delete button next to each note
     public void showDelete(final int position, final View convertView,final Context context, final Note note) {
         View v = convertView;
         final Button b = (Button) v.findViewById(R.id.btnDeleteNote);
@@ -67,7 +67,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
         }
     }
 
-    //access the database
+    //access the database to delete note
     private void deleteOption(int noteToDelete, Context context) {
         NoteDataSource db = new NoteDataSource(context);
         try {
@@ -81,7 +81,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
         this.notifyDataSetChanged();
     }
 
-    //Hide delete button
+    //hide delete button
     public void hideDelete(int position, View convertView, Context context) {
         View v = convertView;
         final Button b = (Button) v.findViewById(R.id.btnDeleteNote);

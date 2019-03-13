@@ -11,7 +11,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //creating thread that will sleep for 10 seconds
+        //creating thread that will sleep for 2 seconds
         Thread t = new Thread() {
             public void run() {
 
