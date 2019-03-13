@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -66,15 +65,9 @@ public class NoteActivity extends AppCompatActivity {
             ds.open();
             note = ds.getNote(sortBy, orderBy);
             ds.close();
-
-            if (note.size() > 0) {
-                ListView listView= (ListView) findViewById(R.id.listView);
+                listView= (ListView) findViewById(R.id.listView);
                 adapter = new NoteAdapter(this, note);
                 listView.setAdapter(adapter);
-            } else {
-                Intent intent = new Intent(NoteActivity.this, EditNoteActivity.class);
-                startActivity(intent);
-            }
         } catch (Exception e) {
             Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
         }
@@ -133,7 +126,7 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void initItemClick(){
-       ListView listView = (ListView)findViewById(R.id.listView);
+       listView = (ListView)findViewById(R.id.listView);
        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView <?> parent, View itemClicked, int position,long id){
