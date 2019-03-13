@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 public class EditNoteActivity extends AppCompatActivity {
@@ -27,30 +27,25 @@ public class EditNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
-        this.editTitle = (EditText) findViewById(R.id.editTitle);
-        this.btnCancel = (Button) findViewById(R.id.btnCancel);
-        this.editFullText = (EditText) findViewById(R.id.editFullText);
-        this.btnSave = (Button) findViewById(R.id.btnSave);
+        editTitle = (EditText) findViewById(R.id.editTitle);
+        btnCancel = (Button) findViewById(R.id.btnCancel);
+        editFullText = (EditText) findViewById(R.id.editFullText);
+        btnSave = (Button) findViewById(R.id.btnSave);
         textDate = findViewById(R.id.textDate);
 
-        note = new Note();
-
-        initSaveBtn();
-        initCancelBtn();
-
         Bundle bundle = getIntent().getExtras();
-            if (bundle != null) {
-                note = (Note) bundle.get("NOTE");
-                if (note != null) {
-                    this.editTitle.setText(note.getTitle());
-                    this.editFullText.setText(note.getFullText());
-                    textDate.setText("Created on: " + note.getDate());
-                }
-            }
+
+        if(bundle != null) {
+            initNote(bundle.getInt("noteid"));
+        } else {
+            note = new Note();
+        }
 
 
         setEditing(true);
         initChangedText();
+        initSaveBtn();
+        initCancelBtn();
     }
 
     //save after done adding or editing note
@@ -152,5 +147,25 @@ public class EditNoteActivity extends AppCompatActivity {
                 note.setFullText(editBody.getText().toString());
             }
         });
+    }
+
+    public void initNote(int id) {
+        NoteDataSource ds = new NoteDataSource(EditNoteActivity.this);
+
+        try {
+            ds.open();
+            note = ds.getSpecificNote(id);
+            ds.close();
+        } catch(Exception e) {
+            Toast.makeText(this, "Load FAILED", Toast.LENGTH_LONG).show();
+        }
+
+        EditText editTitle = findViewById(R.id.editTitle);
+        EditText editBody = findViewById(R.id.editFullText);
+        TextView textDate = findViewById(R.id.textDate);
+
+        editTitle.setText(note.getTitle());
+        editBody.setText(note.getFullText());
+        textDate.setText(note.getDate());
     }
 }
