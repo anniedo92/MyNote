@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -43,6 +44,7 @@ public class NoteActivity extends AppCompatActivity {
         initDeleteBtn();
         initSortPrefs();
         savePrefs();
+        initItemClick();
 
 
     }
@@ -137,8 +139,26 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void initItemClick(){
-       // ListView listView = (ListView)findViewById(R.id.listView);
-        //listView.setOnItemClickListener(New NoteAdapter);
+       ListView listView = (ListView)findViewById(R.id.listView);
+       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView <?> parent, View itemClicked, int position,long id){
+               Note selectedNote = note.get(position)  ;
+               if(isDeleting){
+                   adapter.showDelete(position,itemClicked,NoteActivity.this, selectedNote);
+
+
+               }else{
+                   Intent intent = new Intent(NoteActivity.this, EditNoteActivity.class);
+                   intent.putExtra("noteid",selectedNote.getNoteId());
+                   startActivity(intent);
+
+               }
+
+           }
+
+
+        });
 
     }
 
