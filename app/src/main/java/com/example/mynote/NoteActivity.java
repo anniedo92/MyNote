@@ -135,7 +135,6 @@ public class NoteActivity extends AppCompatActivity {
                Note selectedNote = note.get(position)  ;
                if(isDeleting){
                    adapter.showDelete(position,itemClicked,NoteActivity.this, selectedNote);
-
                }else{
                    Intent intent = new Intent(NoteActivity.this, EditNoteActivity.class);
                    intent.putExtra("noteid",selectedNote.getNoteId());
