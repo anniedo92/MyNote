@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layoutBody"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="25dp"
         tools:text="@tools:sample/date/ddmmyy" />
 
 </RelativeLayout>
