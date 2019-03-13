@@ -48,8 +48,8 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     }
 
 
-    public void showDelete(final int position, final View noteView,final Context notetext, final Note note) {
-        View v = noteView;
+    public void showDelete(final int position, final View convertView,final Context context, final Note note) {
+        View v = convertView;
         final Button b = (Button) v.findViewById(R.id.btnDeleteNote);
         if (b.getVisibility()==View.INVISIBLE) {
             b.setVisibility(View.VISIBLE);
