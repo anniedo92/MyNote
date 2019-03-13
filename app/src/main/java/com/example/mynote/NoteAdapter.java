@@ -9,10 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import java.util.ArrayList;
-
-import javax.sql.DataSource;
 
 public class NoteAdapter extends ArrayAdapter<Note> {
     private ArrayList<Note> items;
@@ -52,7 +49,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
     public void showDelete(final int position, final View noteView,final Context notetext, final Note note) {
         View v = noteView;
-        final Button b = (Button) v.findViewById(R.id.buttonDeleteNote);
+        final Button b = (Button) v.findViewById(R.id.btnHideDelete);
         if (b.getVisibility()==View.INVISIBLE) {
             b.setVisibility(View.VISIBLE);
             b.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +83,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     //Hide delete button
     public void hideDelete(int position, View convertView, Context context) {
         View v = convertView;
-        final Button b = (Button) v.findViewById(R.id.buttonDeleteNote);
+        final Button b = (Button) v.findViewById(R.id.btnHideDelete);
         b.setVisibility(View.INVISIBLE);
         b.setOnClickListener(null);
     }
