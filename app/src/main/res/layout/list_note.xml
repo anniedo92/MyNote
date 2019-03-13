@@ -6,41 +6,35 @@
 
     <TextView
         android:id="@+id/textTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="258dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="93dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="62dp"
         android:text="@string/no_title"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textDate"
-        android:layout_width="103dp"
+        android:layout_width="207dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="93dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="178dp"
         android:text="Date"
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/buttonDeleteNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnHideDelete"
+        android:layout_width="74dp"
+        android:layout_height="35dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:text="Delete"
-        android:textColor="@color/colorAccent"
-        android:visibility="invisible" />
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="38dp"
+        android:text="Delete" />
 
 
 </RelativeLayout>
