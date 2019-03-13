@@ -20,7 +20,7 @@ public class SplashActivity extends Activity {
                     sleep(2000);
 
                     //start new activity
-                    Intent i=new Intent(SplashActivity.this,NoteActivity.class);
+                    Intent i=new Intent(SplashActivity.this, NoteActivity.class);
                     startActivity(i);
 
                     //destroying Splash activity
