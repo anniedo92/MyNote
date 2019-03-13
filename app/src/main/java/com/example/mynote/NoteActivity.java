@@ -25,6 +25,8 @@ public class NoteActivity extends AppCompatActivity {
     private Note currentNote;
     NoteAdapter adapter;
     ArrayList<Note> note;
+    boolean isDeleting = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,10 @@ public class NoteActivity extends AppCompatActivity {
 
         initAddBtn();
         initSortBtn();
+        initDeleteBtn();
         initSortPrefs();
         savePrefs();
+
 
     }
 
@@ -112,10 +116,22 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
+    //INIT DELETEbtn
+
     public void initDeleteBtn() {
-        btnDelete.setOnClickListener(new View.OnClickListener() {
+        final Button deleteBtn = (Button) findViewById(R.id.btnDelete);
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isDeleting) {
+                    deleteBtn.setText("Delete");
+                    isDeleting = false;
+                    adapter.notifyDataSetChanged();
+                }
+                else {
+                    deleteBtn.setText("Done!");
+                    isDeleting = true;
+                }
 
             }
         });

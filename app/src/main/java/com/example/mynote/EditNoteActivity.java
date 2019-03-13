@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
+
+
 public class EditNoteActivity extends AppCompatActivity {
     private EditText editTitle;
     private EditText editFullText;
@@ -18,6 +21,7 @@ public class EditNoteActivity extends AppCompatActivity {
     private Button btnCancel;
     private Note note;
     private TextView textDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
