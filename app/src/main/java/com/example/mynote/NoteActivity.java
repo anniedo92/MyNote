@@ -23,7 +23,6 @@ public class NoteActivity extends AppCompatActivity {
     private Button btnBack;
     ImageButton btnSort;
     private NoteDataSource dbAccess;
-    private Note currentNote;
     NoteAdapter adapter;
     ArrayList<Note> note;
     boolean isDeleting;
@@ -43,7 +42,8 @@ public class NoteActivity extends AppCompatActivity {
         initSortBtn();
         initDeleteBtn();
         initSortPrefs();
-        savePrefs();
+        saveOrderBy();
+        saveSortBy();
         initItemClick();
 
         isDeleting = false;
@@ -52,24 +52,7 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        String orderBy = getSharedPreferences("SortingPreferences",
-                Context.MODE_PRIVATE).getString("orderby", "ASC");
-        String sortBy = getSharedPreferences("SortingPreferences",
-                Context.MODE_PRIVATE).getString("sortby", "title");
-
-        NoteDataSource ds = new NoteDataSource(this);
-
-        try {
-            ds.open();
-            note = ds.getNote(sortBy, orderBy);
-            ds.close();
-                ListView listView= (ListView) findViewById(R.id.listViewNotes);
-                adapter = new NoteAdapter(this, note);
-                listView.setAdapter(adapter);
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
-        }
+        loadNoteList();
     }
 
     //add button will go from main page to add/edit page
@@ -92,14 +75,14 @@ public class NoteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                savePrefs();
-
                 layoutSort.setVisibility(View.GONE);
                 btnBack.setVisibility(View.GONE);
 
                 layoutNoteList.setVisibility(View.VISIBLE);
                 btnAdd.setVisibility(View.VISIBLE);
                 btnDelete.setVisibility(View.VISIBLE);
+
+                loadNoteList();
             }
         });
     }
@@ -161,6 +144,8 @@ public class NoteActivity extends AppCompatActivity {
                     layoutNoteList.setVisibility(View.VISIBLE);
                     btnAdd.setVisibility(View.VISIBLE);
                     btnDelete.setVisibility(View.VISIBLE);
+
+                    loadNoteList();
                 } else {
                     layoutNoteList.setVisibility(View.GONE);
                     btnAdd.setVisibility(View.GONE);
@@ -202,7 +187,7 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     //save after selecting sort
-    private void savePrefs() {
+    private void saveOrderBy() {
         RadioGroup rgOrderBy = findViewById(R.id.rgOrderBy);
 
         rgOrderBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -224,7 +209,9 @@ public class NoteActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void saveSortBy() {
         RadioGroup rgSortBy = findViewById(R.id.rgSortBy);
 
         rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -248,4 +235,25 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
+    private void loadNoteList() {
+        String orderBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("orderby", "ASC");
+        String sortBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("sortby", "title");
+
+        NoteDataSource ds = new NoteDataSource(this);
+
+        try {
+            ds.open();
+            note = ds.getNote(orderBy, sortBy);
+            ds.close();
+
+            ListView listView = (ListView) findViewById(R.id.listViewNotes);
+            adapter = new NoteAdapter(this, note);
+            listView.setAdapter(adapter);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
+        }
+    }
 }
