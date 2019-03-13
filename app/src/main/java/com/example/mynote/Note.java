@@ -2,6 +2,7 @@ package com.example.mynote;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -30,6 +31,14 @@ public class Note implements Serializable {
 
     public String getDate() {
         return dateFormat.format(date);
+    }
+
+    public void setDate(String date) {
+        try {
+            this.date = (Date) dateFormat.parse(date);
+        } catch (ParseException p){
+            p.printStackTrace();
+        }
     }
 
     public String getTitle() {

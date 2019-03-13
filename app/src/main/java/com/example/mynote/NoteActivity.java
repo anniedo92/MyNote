@@ -141,14 +141,13 @@ public class NoteActivity extends AppCompatActivity {
 
                if(isDeleting){
                    adapter.showDelete(position,itemClicked,NoteActivity.this, selectedNote);
+                 
                }else{
                    Intent intent = new Intent(NoteActivity.this, EditNoteActivity.class);
                    intent.putExtra("noteid",selectedNote.getNoteId());
                    startActivity(intent);
                }
            }
-
-
         });
     }
 

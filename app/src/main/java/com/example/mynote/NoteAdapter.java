@@ -56,27 +56,27 @@ public class NoteAdapter extends ArrayAdapter<Note> {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    hideDelete(position, noteView, notetext);
+                    hideDelete(position, convertView, context);
                     items.remove(note);
-                    deleteOption(note.getNoteId(), notetext);
+                    deleteOption(note.getNoteId(), context);
                 }
             });
         }
         else {
-            hideDelete(position, noteView, notetext);
+            hideDelete(position, convertView, context);
         }
     }
 
     //access the database
-    private void deleteOption(int contactToDelete, Context notetext) {
-        NoteDataSource db = new NoteDataSource(notetext);
+    private void deleteOption(int noteToDelete, Context context) {
+        NoteDataSource db = new NoteDataSource(context);
         try {
             db.open();
-            db.deleteContact(contactToDelete);
+            db.deleteNote(noteToDelete);
             db.close();
         }
         catch (Exception e) {
-            Toast.makeText(adapterContext, "Delete Contact Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(adapterContext, "Delete Note Failed", Toast.LENGTH_LONG).show();
         }
         this.notifyDataSetChanged();
     }
