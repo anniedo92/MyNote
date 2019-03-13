@@ -25,6 +25,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
+
         try {
             Note note = items.get(position);
 
@@ -33,11 +34,12 @@ public class NoteAdapter extends ArrayAdapter<Note> {
                 v = vi.inflate(R.layout.list_note, null);
             }
 
-            TextView title = (TextView) v.findViewById(R.id.textTitle);
             TextView date = (TextView) v.findViewById(R.id.textDate);
+            TextView title = (TextView) v.findViewById(R.id.textTitle);
             Button b = (Button) v.findViewById(R.id.btnDeleteNote);
-            title.setText(note.getTitle());
+
             date.setText(note.getDate());
+            title.setText(note.getTitle());
             b.setVisibility(View.INVISIBLE);
         }
         catch (Exception e) {

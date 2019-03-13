@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class NoteActivity extends AppCompatActivity {
 
-    private ListView listView;
     private Button btnAdd;
     private Button btnDelete;
     private Button btnBack;
@@ -27,7 +26,7 @@ public class NoteActivity extends AppCompatActivity {
     private Note currentNote;
     NoteAdapter adapter;
     ArrayList<Note> note;
-    boolean isDeleting = true;
+    boolean isDeleting;
 
 
     @Override
@@ -47,7 +46,7 @@ public class NoteActivity extends AppCompatActivity {
         savePrefs();
         initItemClick();
 
-
+        isDeleting = false;
     }
 
     @Override
@@ -64,9 +63,10 @@ public class NoteActivity extends AppCompatActivity {
             ds.open();
             note = ds.getNote(sortBy, orderBy);
             ds.close();
-                listView= (ListView) findViewById(R.id.listView);
+                ListView listView= (ListView) findViewById(R.id.listViewNotes);
                 adapter = new NoteAdapter(this, note);
                 listView.setAdapter(adapter);
+
         } catch (Exception e) {
             Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
         }
@@ -127,7 +127,7 @@ public class NoteActivity extends AppCompatActivity {
 
     //click each note to edit
     private void initItemClick(){
-       listView = (ListView)findViewById(R.id.listView);
+       ListView listView = (ListView)findViewById(R.id.listViewNotes);
        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView <?> parent, View itemClicked, int position,long id){

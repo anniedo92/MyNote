@@ -114,7 +114,7 @@
         android:layout_marginBottom="40dp" >
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/listViewNotes"
             android:layout_width="375dp"
             android:layout_height="525dp"
             android:layout_centerInParent="true"
