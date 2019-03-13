@@ -26,6 +26,20 @@ public class NoteDataSource {
 //        return instance;
 //    }
 
+
+
+    //DELETE BUTTON
+    public boolean deleteContact(int noteId) {
+        boolean noteDelete = false;
+        try {
+            noteDelete = database.delete("contact", "_id=" + noteId, null) > 0;
+        }
+        catch (Exception e) {
+            //Do nothing -return value already set to false
+        }
+        return noteDelete;
+    }
+
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
@@ -35,6 +49,7 @@ public class NoteDataSource {
             this.dbHelper.close();
         }
     }
+
 
     public boolean insertNote(Note nt) {
         boolean didSucceed = false;
