@@ -82,7 +82,7 @@ public class NoteDataSource {
 
     //get title
     public ArrayList<String> getTitle() {
-        ArrayList<String> title = new ArrayList<String>();
+        ArrayList<String> title = new ArrayList<>();
         try {
             String query = "Select title from note";
             Cursor cursor = database.rawQuery(query, null);
@@ -100,15 +100,15 @@ public class NoteDataSource {
     }
 
 
-    public ArrayList<Note> getNote(String sortField, String sortOrder) {
-        ArrayList<Note> note = new ArrayList<Note>();
+    public ArrayList<Note> getNote(String orderBy, String sortBy) {
+        ArrayList<Note> note = new ArrayList<>();
         try {
-            String query = "SELECT  * FROM note ORDER BY " + sortField + " " + sortOrder;
-
+            String query = "SELECT * FROM note ORDER BY " + sortBy + " " + orderBy;
             Cursor cursor = database.rawQuery(query, null);
 
             Note newNote;
             cursor.moveToFirst();
+
             while (!cursor.isAfterLast()) {
                 newNote = new Note();                                          //1
                 newNote.setNoteId(cursor.getInt(0));
