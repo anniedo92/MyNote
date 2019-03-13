@@ -33,7 +33,8 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
             TextView title = (TextView) v.findViewById(R.id.textTitle);
             TextView date = (TextView) v.findViewById(R.id.textDate);
-
+            title.setText(note.getTitle());
+            date.setText(note.getDate());
         }
         catch (Exception e) {
             e.printStackTrace();

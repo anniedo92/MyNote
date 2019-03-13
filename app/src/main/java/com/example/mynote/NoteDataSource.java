@@ -36,14 +36,6 @@ public class NoteDataSource {
         }
     }
 
-//    public void saveNote(Note note) {
-//        ContentValues values = new ContentValues();
-//        values.put("date", note.getDate());
-//        values.put("title", note.getTitle());
-//        values.put("fullText", note.getFullText());
-//        database.insert("note", null, values);
-//    }
-
     public boolean insertNote(Note nt) {
         boolean didSucceed = false;
         try {
@@ -99,7 +91,7 @@ public class NoteDataSource {
 
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                title.add(cursor.getString(0));
+                title.add(cursor.getString(2));
                 cursor.moveToNext();
             }
             cursor.close();
@@ -121,8 +113,8 @@ public class NoteDataSource {
             while (!cursor.isAfterLast()) {
                 newNote = new Note();                                          //1
                 newNote.setNoteId(cursor.getInt(0));
-                newNote.setTitle(cursor.getString(1));
-                newNote.setFullText(cursor.getString(2));
+                newNote.setTitle(cursor.getString(2));
+                newNote.setFullText(cursor.getString(3));
 
                 note.add(newNote);
                 cursor.moveToNext();
@@ -151,8 +143,8 @@ public class NoteDataSource {
 
         if (cursor.moveToFirst()) {
             note.setNoteId(cursor.getInt(0));
-            note.setTitle(cursor.getString(1));
-            note.setFullText(cursor.getString(2));
+            note.setTitle(cursor.getString(2));
+            note.setFullText(cursor.getString(3));
 
             cursor.close();
         }
