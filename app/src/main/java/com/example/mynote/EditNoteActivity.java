@@ -53,6 +53,7 @@ public class EditNoteActivity extends AppCompatActivity {
         initChangedText();
     }
 
+    //save after done adding or editing note
     private void initSaveBtn() {
 
             Button btnSave = (Button) findViewById(R.id.btnSave);
@@ -86,7 +87,7 @@ public class EditNoteActivity extends AppCompatActivity {
         });
     }
 
-    //CANCEL BUTTON ACTION
+    //cancel if does not want to save
     private void initCancelBtn() {
         Button btnCancel = (Button) findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -104,10 +105,7 @@ public class EditNoteActivity extends AppCompatActivity {
         });
     }
 
-    public void initNote(int noteId) {
-
-    }
-
+    //enable edit title and date
     private void setEditing(boolean enabled) {
         EditText editTitle = findViewById(R.id.editTitle);
         EditText editBody = findViewById(R.id.editFullText);
@@ -116,6 +114,7 @@ public class EditNoteActivity extends AppCompatActivity {
         editBody.setEnabled(enabled);
     }
 
+    //able to change text
     private void initChangedText() {
         final EditText editTitle = findViewById(R.id.editTitle);
         final EditText editBody = findViewById(R.id.editFullText);
