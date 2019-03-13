@@ -16,7 +16,6 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     private Context adapterContext;
 
 
-
     public NoteAdapter(Context context, ArrayList<Note> items) {
         super(context, R.layout.list_note, items);
         adapterContext = context;
