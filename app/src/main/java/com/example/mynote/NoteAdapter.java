@@ -36,8 +36,10 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
             TextView title = (TextView) v.findViewById(R.id.textTitle);
             TextView date = (TextView) v.findViewById(R.id.textDate);
+            Button b = (Button) v.findViewById(R.id.btnHideDelete);
             title.setText(note.getTitle());
             date.setText(note.getDate());
+            b.setVisibility(View.INVISIBLE);
         }
         catch (Exception e) {
             e.printStackTrace();
