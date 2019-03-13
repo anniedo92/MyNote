@@ -117,7 +117,6 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     //INIT DELETEbtn
-
     public void initDeleteBtn() {
         final Button deleteBtn = (Button) findViewById(R.id.btnDelete);
         deleteBtn.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +134,12 @@ public class NoteActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void initItemClick(){
+       // ListView listView = (ListView)findViewById(R.id.listView);
+        //listView.setOnItemClickListener(New NoteAdapter);
+
     }
 
     private void initSortBtn() {
