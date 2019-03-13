@@ -166,6 +166,6 @@ public class EditNoteActivity extends AppCompatActivity {
 
         editTitle.setText(note.getTitle());
         editBody.setText(note.getFullText());
-        textDate.setText(note.getDate());
+        textDate.setText("Created on: " + note.getDate());
     }
 }
