@@ -1,6 +1,5 @@
 package com.example.mynote;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +31,6 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        this.listView = (ListView) findViewById(R.id.listView);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnBack = (Button) findViewById(R.id.btnBack);
@@ -59,7 +57,7 @@ public class NoteActivity extends AppCompatActivity {
             note = ds.getNote(sortBy, orderBy);
             ds.close();
             adapter = new NoteAdapter(this, note);
-            ListView listView = (ListView) findViewById(R.id.listView);
+            listView = (ListView) findViewById(R.id.listView);
             listView.setAdapter(adapter);
 
         } catch (Exception e) {
@@ -71,7 +69,7 @@ public class NoteActivity extends AppCompatActivity {
             note = ds.getNote(sortBy, orderBy);
             ds.close();
             if (note.size() > 0) {
-                ListView listView = (ListView) findViewById(R.id.listView);
+                listView = (ListView) findViewById(R.id.listView);
                 adapter = new NoteAdapter(this, note);
                 listView.setAdapter(adapter);
             } else {
@@ -83,7 +81,8 @@ public class NoteActivity extends AppCompatActivity {
         }
 
     }
-        public void initAddBtn() {
+
+    public void initAddBtn() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

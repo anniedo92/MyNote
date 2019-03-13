@@ -12,7 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class EditNoteActivity extends AppCompatActivity {
-    private EditText editText;
+    private EditText editTitle;
+    private EditText editFullText;
     private Button btnSave;
     private Button btnCancel;
     private Note note;
@@ -23,9 +24,9 @@ public class EditNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
-        this.editText = (EditText) findViewById(R.id.editTitle);
+        this.editTitle = (EditText) findViewById(R.id.editTitle);
         this.btnCancel = (Button) findViewById(R.id.btnCancel);
-        this.editText = (EditText) findViewById(R.id.editFullText);
+        this.editFullText = (EditText) findViewById(R.id.editFullText);
         this.btnSave = (Button) findViewById(R.id.btnSave);
 
         note = new Note();
@@ -37,7 +38,8 @@ public class EditNoteActivity extends AppCompatActivity {
             if (bundle != null) {
                 note = (Note) bundle.get("NOTE");
                 if (note != null) {
-                    this.editText.setText(note.getFullText());
+                    this.editTitle.setText(note.getTitle());
+                    this.editFullText.setText(note.getFullText());
                 }
             }
 
@@ -94,7 +96,7 @@ public class EditNoteActivity extends AppCompatActivity {
         });
     }
 
-//CANCEL BUTTON ACTION
+    //CANCEL BUTTON ACTION
     private void initCancelBtn() {
         Button btnCancel = (Button) findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -111,68 +113,6 @@ public class EditNoteActivity extends AppCompatActivity {
             }
         });
     }
-
-//        private void initSaveButton() {
-//        Button saveButton = (Button) findViewById(R.id.buttonSave);
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                hideKeyboard();
-//                boolean wasSuccessful = false;
-//                ContactDataSource ds = new ContactDataSource(ContactActivity.this);
-//                try {
-//                    ds.open();
-//
-//                    if (currentContact.getContactID() == -1) {
-//                        wasSuccessful = ds.insertContact(currentContact);
-//                        int newId = ds.getLastContactId();
-//                        currentContact.setContactID(newId);
-//                    } else {
-//                        wasSuccessful = ds.updateContact(currentContact);
-//                    }
-//                    ds.close();
-//                }
-//                catch (Exception e) {
-//                    wasSuccessful = false;
-//                }
-//
-//                if (wasSuccessful) {
-//                    ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleButtonEdit);
-//                    editToggle.toggle();
-//                    setForEditing(false);
-//                }
-//            }
-//        });
-//    }
-//
-//        this.btnCancel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onCancelClicked();
-//            }
-//        });
-//
-//        puclic void onSaveClicked() {
-//            NoteDataSource dbAccess = NoteDataSource.getInstance(this);
-//            dbAccess.open();
-//            if (note == null) {
-//                //add new note
-//                Note temp = new Note();
-//                temp.setFullText(editText.getText().toString());
-//                dbAccess.save(temp);
-//            } else {
-//                note.setFullText(editText.getText().toString());
-//                dbAccess.updateNote(note);
-//            }
-//            dbAccess.close();
-//            this.finish();
-//        }
-//
-//        public void onCancelClicked() {
-//            this.finish();
-//        }
-
 
     public void initNote(int noteId) {
 
@@ -203,7 +143,7 @@ public class EditNoteActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                note.setFullText(editTitle.getText().toString());
+                note.setTitle(editTitle.getText().toString());
             }
         });
 
