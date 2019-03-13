@@ -61,7 +61,6 @@ public class NoteActivity extends AppCompatActivity {
         NoteDataSource ds = new NoteDataSource(this);
 
         try {
-
             ds.open();
             note = ds.getNote(sortBy, orderBy);
             ds.close();
@@ -71,9 +70,9 @@ public class NoteActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Error retrieving note", Toast.LENGTH_LONG).show();
         }
-
     }
 
+    //add button will go from main page to add/edit page
     public void initAddBtn() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +83,7 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
+    //back button will go back to main page after setting
     public void initBackBtn() {
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +104,7 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
-    //INIT DELETEbtn
+    //delete button at bottom to select show or hide delete button next to each note
     public void initDeleteBtn() {
         final Button deleteBtn = (Button) findViewById(R.id.btnDelete);
 
@@ -125,6 +125,7 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
+    //click each note to edit
     private void initItemClick(){
        listView = (ListView)findViewById(R.id.listView);
        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -144,6 +145,7 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
+    //sort button to sort
     private void initSortBtn() {
 
         btnSort.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +175,7 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
+    //select sort by date or title and asc or desc
     private void initSortPrefs() {
         String orderBy = getSharedPreferences("SortingPreferences",
                 Context.MODE_PRIVATE).getString("orderby", "ASC");
@@ -198,6 +201,7 @@ public class NoteActivity extends AppCompatActivity {
         }
     }
 
+    //save after selecting sort
     private void savePrefs() {
         RadioGroup rgOrderBy = findViewById(R.id.rgOrderBy);
 

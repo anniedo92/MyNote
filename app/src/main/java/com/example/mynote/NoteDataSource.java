@@ -30,7 +30,7 @@ public class NoteDataSource {
         }
     }
 
-
+    //insert note
     public boolean insertNote(Note nt) {
         boolean didSucceed = false;
         try {
@@ -46,6 +46,8 @@ public class NoteDataSource {
         return didSucceed;
     }
 
+
+    //update note
     public boolean updateNote(Note nt) {
         boolean didSucceed = false;
         try {
@@ -62,6 +64,7 @@ public class NoteDataSource {
         return didSucceed;
     }
 
+    //get last note id
     public int getLastNoteId() {
         int lastId = -1;
         try {
@@ -77,7 +80,7 @@ public class NoteDataSource {
         return lastId;
     }
 
-
+    //get title
     public ArrayList<String> getTitle() {
         ArrayList<String> title = new ArrayList<String>();
         try {
@@ -95,6 +98,7 @@ public class NoteDataSource {
         }
         return title;
     }
+
 
     public ArrayList<Note> getNote(String sortField, String sortOrder) {
         ArrayList<Note> note = new ArrayList<Note>();
@@ -121,6 +125,7 @@ public class NoteDataSource {
         return note;
     }
 
+    //delete note
     public boolean deleteNote(int noteId) {
         boolean didDelete = false;
         try {
@@ -131,6 +136,8 @@ public class NoteDataSource {
         return didDelete;
     }
 
+
+    //get note
     public Note getSpecificNote(int noteId) {
         Note note = new Note();
         String query = "SELECT  * FROM note WHERE _id =" + noteId;
