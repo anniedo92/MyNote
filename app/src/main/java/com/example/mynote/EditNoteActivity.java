@@ -39,6 +39,7 @@ public class EditNoteActivity extends AppCompatActivity {
             initNote(bundle.getInt("noteid"));
         } else {
             note = new Note();
+            textDate.setText("Created on: " + note.getDate());
         }
 
 
