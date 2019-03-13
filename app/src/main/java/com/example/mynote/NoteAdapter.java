@@ -35,7 +35,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
             TextView title = (TextView) v.findViewById(R.id.textTitle);
             TextView date = (TextView) v.findViewById(R.id.textDate);
-            Button b = (Button) v.findViewById(R.id.btnHideDelete);
+            Button b = (Button) v.findViewById(R.id.btnDeleteNote);
             title.setText(note.getTitle());
             date.setText(note.getDate());
             b.setVisibility(View.INVISIBLE);
@@ -50,7 +50,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
     public void showDelete(final int position, final View noteView,final Context notetext, final Note note) {
         View v = noteView;
-        final Button b = (Button) v.findViewById(R.id.btnHideDelete);
+        final Button b = (Button) v.findViewById(R.id.btnDeleteNote);
         if (b.getVisibility()==View.INVISIBLE) {
             b.setVisibility(View.VISIBLE);
             b.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     //Hide delete button
     public void hideDelete(int position, View convertView, Context context) {
         View v = convertView;
-        final Button b = (Button) v.findViewById(R.id.btnHideDelete);
+        final Button b = (Button) v.findViewById(R.id.btnDeleteNote);
         b.setVisibility(View.INVISIBLE);
         b.setOnClickListener(null);
     }
