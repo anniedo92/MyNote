@@ -174,7 +174,7 @@ public class EditNoteActivity extends AppCompatActivity {
         textDate.setText("Created on: " + note.getDate());
     }
 
-    private void initChangedPriority() {
+    /*private void initChangedPriority() {
         RadioGroup rgPriority = findViewById(R.id.rgPriority);
 
         rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -193,9 +193,30 @@ public class EditNoteActivity extends AppCompatActivity {
                 }
             }
         });
+    }*/
+
+    private void initChangedPriority() {
+        RadioGroup rgPriority = findViewById(R.id.rgPriority);
+
+        rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbLow = findViewById(R.id.radioLow);
+                RadioButton rbMed = findViewById(R.id.radioMed);
+                RadioButton rbHigh = findViewById(R.id.radioHigh);
+
+                if(rbLow.isChecked()) {
+                    note.setPriority(1);
+                } else if(rbMed.isChecked()) {
+                    note.setPriority(2);
+                } else {
+                    note.setPriority(3);
+                }
+            }
+        });
     }
 
-    private void setPriority(String p) {
+    /*private void setPriority(String p) {
         RadioButton rbLow = findViewById(R.id.radioLow);
         RadioButton rbMed = findViewById(R.id.radioMed);
         RadioButton rbHigh = findViewById(R.id.radioHigh);
@@ -203,6 +224,20 @@ public class EditNoteActivity extends AppCompatActivity {
         if(p.equalsIgnoreCase("low")) {
             rbLow.setChecked(true);
         } else if(p.equalsIgnoreCase("med")) {
+            rbMed.setChecked(true);
+        } else {
+            rbHigh.setChecked(true);
+        }
+    }*/
+
+    private void setPriority(int p) {
+        RadioButton rbLow = findViewById(R.id.radioLow);
+        RadioButton rbMed = findViewById(R.id.radioMed);
+        RadioButton rbHigh = findViewById(R.id.radioHigh);
+
+        if(p == 1) {
+            rbLow.setChecked(true);
+        } else if(p == 2) {
             rbMed.setChecked(true);
         } else {
             rbHigh.setChecked(true);

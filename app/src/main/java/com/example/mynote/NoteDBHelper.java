@@ -7,13 +7,14 @@ import android.util.Log;
 
 public class NoteDBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "mynote1.1.db";
-    private static final int DATABASE_VERSION = 1;
+    /*private static final String DATABASE_NAME = "mynote1.1.db";*/
+    private static final String DATABASE_NAME = "mynote7.db";
+    private static final int DATABASE_VERSION = 5;
 
     // Database creation sql statement
     private static final String CREATE_TABLE_CONTACT =
             "create table note (_id integer primary key autoincrement, "
-                    + "date text not null, priority text, title text, fullText text);";
+                    + "date text not null, priority integer, title text, fullText text);";
 
     public NoteDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,6 +35,8 @@ public class NoteDBHelper extends SQLiteOpenHelper {
     }
 }
 
+/*"create table note (_id integer primary key autoincrement, "
+                    + "date text not null, priority text, title text, fullText text);";*/
 
 
 

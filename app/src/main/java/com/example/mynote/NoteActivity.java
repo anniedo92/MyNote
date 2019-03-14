@@ -168,8 +168,10 @@ public class NoteActivity extends AppCompatActivity {
                 Context.MODE_PRIVATE).getString("orderby", "ASC");
         String sortBy = getSharedPreferences("SortingPreferences",
                 Context.MODE_PRIVATE).getString("sortby", "title");
-        String priorityBy = getSharedPreferences("SortingPreferences",
-                Context.MODE_PRIVATE).getString("priorityby", "low");
+        /*String priorityBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("priorityby", "low");*/
+        int priorityBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getInt("priorby", 1);
 
         RadioButton rbASC = findViewById(R.id.radioASC);
         RadioButton rbDESC = findViewById(R.id.radioDESC);
@@ -193,9 +195,17 @@ public class NoteActivity extends AppCompatActivity {
         RadioButton rbMed = findViewById(R.id.rbMed);
         RadioButton rbHigh = findViewById(R.id.rbHigh);
 
-        if(priorityBy.equalsIgnoreCase("low")) {
+        /*if(priorityBy.equalsIgnoreCase("low")) {
             rbLow.setChecked(true);
         } else if(priorityBy.equalsIgnoreCase("med")) {
+            rbMed.setChecked(true);
+        } else {
+            rbHigh.setChecked(true);
+        }*/
+
+        if(priorityBy == 1) {
+            rbLow.setChecked(true);
+        } else if(priorityBy == 2) {
             rbMed.setChecked(true);
         } else {
             rbHigh.setChecked(true);
@@ -261,7 +271,7 @@ public class NoteActivity extends AppCompatActivity {
                 RadioButton rbMed = findViewById(R.id.rbMed);
                 RadioButton rbHigh = findViewById(R.id.rbHigh);
 
-                if(rbLow.isChecked()) {
+                /*if(rbLow.isChecked()) {
                     getSharedPreferences("SortingPreferences", Context.MODE_PRIVATE)
                             .edit()
                             .putString("priorityby", "low")
@@ -276,6 +286,23 @@ public class NoteActivity extends AppCompatActivity {
                             .edit()
                             .putString("priorityby", "high")
                             .commit();
+                }*/
+
+                if(rbLow.isChecked()) {
+                    getSharedPreferences("SortingPreferences", Context.MODE_PRIVATE)
+                            .edit()
+                            .putInt("priorby", 1)
+                            .commit();
+                } else if(rbMed.isChecked()) {
+                    getSharedPreferences("SortingPreferences", Context.MODE_PRIVATE)
+                            .edit()
+                            .putInt("priorby", 2)
+                            .commit();
+                } else {
+                    getSharedPreferences("SortingPreferences", Context.MODE_PRIVATE)
+                            .edit()
+                            .putInt("priorby", 3)
+                            .commit();
                 }
             }
         });
@@ -286,8 +313,10 @@ public class NoteActivity extends AppCompatActivity {
                 Context.MODE_PRIVATE).getString("orderby", "ASC");
         String sortBy = getSharedPreferences("SortingPreferences",
                 Context.MODE_PRIVATE).getString("sortby", "title");
-        String priorityBy = getSharedPreferences("SortingPreferences",
-                Context.MODE_PRIVATE).getString("priorityby", "low");
+        /*String priorityBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("priorityby", "low");*/
+        int priorityBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getInt("priorby", 1);
 
         NoteDataSource ds = new NoteDataSource(this);
 

@@ -101,10 +101,11 @@ public class NoteDataSource {
         return title;
     }
 
-    public ArrayList<Note> getNote(String priorityBy, String orderBy, String sortBy) {
+    public ArrayList<Note> getNote(int priorityBy, String orderBy, String sortBy) {
         ArrayList<Note> note = new ArrayList<>();
         try {
-            String query = "SELECT * FROM note WHERE priority='" + priorityBy + "' ORDER BY " + sortBy + " " + orderBy;
+            /*String query = "SELECT * FROM note WHERE priority='" + priorityBy + "' ORDER BY " + sortBy + " " + orderBy;*/
+            String query = "SELECT * FROM note ORDER BY " + sortBy + " " + orderBy;
             Cursor cursor = database.rawQuery(query, null);
 
             Note newNote;
@@ -113,7 +114,8 @@ public class NoteDataSource {
             while (!cursor.isAfterLast()) {
                 newNote = new Note();                                          //1
                 newNote.setNoteId(cursor.getInt(0));
-                newNote.setPriority(cursor.getString(2));
+                /*newNote.setPriority(cursor.getString(2));*/
+                newNote.setPriority(cursor.getInt(2));
                 newNote.setTitle(cursor.getString(3));
                 newNote.setFullText(cursor.getString(4));
 
@@ -147,7 +149,8 @@ public class NoteDataSource {
 
         if (cursor.moveToFirst()) {
             note.setNoteId(cursor.getInt(0));
-            note.setPriority(cursor.getString(2));
+            /*note.setPriority(cursor.getString(2));*/
+            note.setPriority(cursor.getInt(2));
             note.setTitle(cursor.getString(3));
             note.setFullText(cursor.getString(4));
 
