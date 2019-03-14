@@ -35,10 +35,12 @@ public class NoteAdapter extends ArrayAdapter<Note> {
             }
 
             TextView date = (TextView) v.findViewById(R.id.textDate);
+            TextView priority = (TextView) v.findViewById(R.id.priorityLvl) ;
             TextView title = (TextView) v.findViewById(R.id.textTitle);
             Button b = (Button) v.findViewById(R.id.btnDeleteNote);
 
             date.setText(note.getDate());
+            priority.setText("Priority: " + note.getPriority());
             title.setText(note.getTitle());
             b.setVisibility(View.INVISIBLE);
         }

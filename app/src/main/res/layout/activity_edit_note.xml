@@ -33,11 +33,61 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/layoutPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/textPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Priority= "
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:id="@+id/rgPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textPriority"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radioLow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:buttonTint="@color/AppColor"
+                android:text="Low" />
+
+            <RadioButton
+                android:id="@+id/radioMed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:text="Med" />
+
+            <RadioButton
+                android:id="@+id/radioHigh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:buttonTint="@color/colorAccent"
+                android:text="High" />
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
     <EditText
         android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/layoutPriority"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
         android:layout_marginRight="25dp"
@@ -53,12 +103,12 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true" >
 
             <EditText
                 android:id="@+id/editFullText"

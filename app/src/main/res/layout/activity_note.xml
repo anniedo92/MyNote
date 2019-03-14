@@ -134,13 +134,59 @@
         android:visibility="gone" >
 
         <TextView
-            android:id="@+id/textOrderBy"
+            android:id="@+id/textPriorityLvl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
+            android:text="Priority Level"
+            android:textSize="22dp" />
+
+        <RadioGroup
+            android:id="@+id/rgPriorityBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textPriorityLvl">
+
+            <RadioButton
+                android:id="@+id/rbLow"
+                android:text="Low"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbMed"
+                android:text="Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/rbHigh"
+                android:text="High"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textOrderBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/rgPriorityBy"
             android:text="Order By"
             android:textSize="22dp" />
 
