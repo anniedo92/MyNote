@@ -24,6 +24,15 @@
         android:layout_marginTop="5dp"
         android:textSize="16dp" />
 
+    <TextView
+        android:id="@+id/priorityLvl"
+        android:text="Priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textDate"
+        android:layout_alignLeft="@id/textTitle"
+        android:layout_marginTop="5dp" />
+
     <Button
         android:id="@+id/btnDeleteNote"
         android:text="Delete"

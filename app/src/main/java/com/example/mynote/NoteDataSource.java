@@ -36,6 +36,7 @@ public class NoteDataSource {
         try {
             ContentValues initialValues = new ContentValues();
             initialValues.put("date", nt.getDate());
+            initialValues.put("priority", nt.getPriority());
             initialValues.put("title", nt.getTitle());
             initialValues.put("fullText", nt.getFullText());
 
@@ -54,6 +55,7 @@ public class NoteDataSource {
             Long rowId = (long) nt.getNoteId();
             ContentValues updateValues = new ContentValues();
             updateValues.put("date", nt.getDate());
+            updateValues.put("priority", nt.getPriority());
             updateValues.put("title", nt.getTitle());
             updateValues.put("fullText", nt.getFullText());
 
@@ -89,7 +91,7 @@ public class NoteDataSource {
 
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                title.add(cursor.getString(2));
+                title.add(cursor.getString(3));
                 cursor.moveToNext();
             }
             cursor.close();
@@ -99,11 +101,10 @@ public class NoteDataSource {
         return title;
     }
 
-
-    public ArrayList<Note> getNote(String orderBy, String sortBy) {
+    public ArrayList<Note> getNote(String priorityBy, String orderBy, String sortBy) {
         ArrayList<Note> note = new ArrayList<>();
         try {
-            String query = "SELECT * FROM note ORDER BY " + sortBy + " " + orderBy;
+            String query = "SELECT * FROM note WHERE priority='" + priorityBy + "' ORDER BY " + sortBy + " " + orderBy;
             Cursor cursor = database.rawQuery(query, null);
 
             Note newNote;
@@ -112,8 +113,9 @@ public class NoteDataSource {
             while (!cursor.isAfterLast()) {
                 newNote = new Note();                                          //1
                 newNote.setNoteId(cursor.getInt(0));
-                newNote.setTitle(cursor.getString(2));
-                newNote.setFullText(cursor.getString(3));
+                newNote.setPriority(cursor.getString(2));
+                newNote.setTitle(cursor.getString(3));
+                newNote.setFullText(cursor.getString(4));
 
                 note.add(newNote);
                 cursor.moveToNext();
@@ -145,8 +147,9 @@ public class NoteDataSource {
 
         if (cursor.moveToFirst()) {
             note.setNoteId(cursor.getInt(0));
-            note.setTitle(cursor.getString(2));
-            note.setFullText(cursor.getString(3));
+            note.setPriority(cursor.getString(2));
+            note.setTitle(cursor.getString(3));
+            note.setFullText(cursor.getString(4));
 
             cursor.close();
         }

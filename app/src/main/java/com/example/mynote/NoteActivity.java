@@ -3,6 +3,7 @@ package com.example.mynote;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -44,6 +45,7 @@ public class NoteActivity extends AppCompatActivity {
         initSortPrefs();
         saveOrderBy();
         saveSortBy();
+        savePriorityBy();
         initItemClick();
 
         isDeleting = false;
@@ -166,6 +168,8 @@ public class NoteActivity extends AppCompatActivity {
                 Context.MODE_PRIVATE).getString("orderby", "ASC");
         String sortBy = getSharedPreferences("SortingPreferences",
                 Context.MODE_PRIVATE).getString("sortby", "title");
+        String priorityBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("priorityby", "low");
 
         RadioButton rbASC = findViewById(R.id.radioASC);
         RadioButton rbDESC = findViewById(R.id.radioDESC);
@@ -183,6 +187,18 @@ public class NoteActivity extends AppCompatActivity {
             rbTitle.setChecked(true);
         } else {
             rbDate.setChecked(true);
+        }
+
+        RadioButton rbLow = findViewById(R.id.rbLow);
+        RadioButton rbMed = findViewById(R.id.rbMed);
+        RadioButton rbHigh = findViewById(R.id.rbHigh);
+
+        if(priorityBy.equalsIgnoreCase("low")) {
+            rbLow.setChecked(true);
+        } else if(priorityBy.equalsIgnoreCase("med")) {
+            rbMed.setChecked(true);
+        } else {
+            rbHigh.setChecked(true);
         }
     }
 
@@ -235,17 +251,49 @@ public class NoteActivity extends AppCompatActivity {
         });
     }
 
+    private void savePriorityBy() {
+        RadioGroup rgPriorityBy = findViewById(R.id.rgPriorityBy);
+
+        rgPriorityBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbLow = findViewById(R.id.rbLow);
+                RadioButton rbMed = findViewById(R.id.rbMed);
+                RadioButton rbHigh = findViewById(R.id.rbHigh);
+
+                if(rbLow.isChecked()) {
+                    getSharedPreferences("SortingPreferences", Context.MODE_PRIVATE)
+                            .edit()
+                            .putString("priorityby", "low")
+                            .commit();
+                } else if(rbMed.isChecked()) {
+                    getSharedPreferences("SortingPreferences", Context.MODE_PRIVATE)
+                            .edit()
+                            .putString("priorityby", "med")
+                            .commit();
+                } else {
+                    getSharedPreferences("SortingPreferences", Context.MODE_PRIVATE)
+                            .edit()
+                            .putString("priorityby", "high")
+                            .commit();
+                }
+            }
+        });
+    }
+
     private void loadNoteList() {
         String orderBy = getSharedPreferences("SortingPreferences",
                 Context.MODE_PRIVATE).getString("orderby", "ASC");
         String sortBy = getSharedPreferences("SortingPreferences",
                 Context.MODE_PRIVATE).getString("sortby", "title");
+        String priorityBy = getSharedPreferences("SortingPreferences",
+                Context.MODE_PRIVATE).getString("priorityby", "low");
 
         NoteDataSource ds = new NoteDataSource(this);
 
         try {
             ds.open();
-            note = ds.getNote(orderBy, sortBy);
+            note = ds.getNote(priorityBy, orderBy, sortBy);
             ds.close();
 
             ListView listView = (ListView) findViewById(R.id.listViewNotes);

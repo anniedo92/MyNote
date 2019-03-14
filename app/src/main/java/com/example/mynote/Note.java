@@ -10,6 +10,7 @@ public class Note implements Serializable {
 
     private int noteId;
     private Date date;
+    private String priority;
     private String title;
     private String fullText;
 //    private boolean fullDisplayed;
@@ -55,6 +56,13 @@ public class Note implements Serializable {
         this.fullText = fullText;
     }
 
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
 //    public String getShortText() {
 //        String temp = fullText.replaceAll("\n", " ");
 //        if (temp.length() > 20) {

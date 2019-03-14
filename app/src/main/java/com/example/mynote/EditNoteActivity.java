@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +47,7 @@ public class EditNoteActivity extends AppCompatActivity {
 
         setEditing(true);
         initChangedText();
+        initChangedPriority();
         initSaveBtn();
         initCancelBtn();
     }
@@ -165,8 +168,44 @@ public class EditNoteActivity extends AppCompatActivity {
         EditText editBody = findViewById(R.id.editFullText);
         TextView textDate = findViewById(R.id.textDate);
 
+        setPriority(note.getPriority());
         editTitle.setText(note.getTitle());
         editBody.setText(note.getFullText());
         textDate.setText("Created on: " + note.getDate());
+    }
+
+    private void initChangedPriority() {
+        RadioGroup rgPriority = findViewById(R.id.rgPriority);
+
+        rgPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbLow = findViewById(R.id.radioLow);
+                RadioButton rbMed = findViewById(R.id.radioMed);
+                RadioButton rbHigh = findViewById(R.id.radioHigh);
+
+                if(rbLow.isChecked()) {
+                    note.setPriority("low");
+                } else if(rbMed.isChecked()) {
+                    note.setPriority("med");
+                } else {
+                    note.setPriority("high");
+                }
+            }
+        });
+    }
+
+    private void setPriority(String p) {
+        RadioButton rbLow = findViewById(R.id.radioLow);
+        RadioButton rbMed = findViewById(R.id.radioMed);
+        RadioButton rbHigh = findViewById(R.id.radioHigh);
+
+        if(p.equalsIgnoreCase("low")) {
+            rbLow.setChecked(true);
+        } else if(p.equalsIgnoreCase("med")) {
+            rbMed.setChecked(true);
+        } else {
+            rbHigh.setChecked(true);
+        }
     }
 }
