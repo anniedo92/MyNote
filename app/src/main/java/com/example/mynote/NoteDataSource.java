@@ -104,7 +104,20 @@ public class NoteDataSource {
     public ArrayList<Note> getNote(String priorityBy, String orderBy, String sortBy) {
         ArrayList<Note> note = new ArrayList<>();
         try {
-            String query = "SELECT * FROM note WHERE priority='" + priorityBy + "' ORDER BY " + sortBy + " " + orderBy;
+            // query below = Filters priority, only showing selected priority type
+            /*String query = "SELECT * FROM note WHERE priority='" + priorityBy + "' ORDER BY " + sortBy + " " + orderBy;*/
+            String query = "";
+
+            if(priorityBy.equalsIgnoreCase("low")) {
+                query = "SELECT * FROM note ORDER BY case when priority = 'low' then 1" +
+                        " when priority = 'med' then 2" +
+                        " else 'high' end";
+            } else if(priorityBy.equalsIgnoreCase("med")) {
+                query = "SELECT * FROM note ORDER BY priority DESC, " + sortBy + " " + orderBy;
+            } else {
+                query = "SELECT * FROM note ORDER BY priority ASC, " + sortBy + " " + orderBy;
+            }
+
             Cursor cursor = database.rawQuery(query, null);
 
             Note newNote;
