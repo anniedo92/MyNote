@@ -19,6 +19,7 @@ public class Note implements Serializable {
     public Note() {
         noteId = -1;
         this.date = new Date();
+        priority = "low";
     }
 
 
